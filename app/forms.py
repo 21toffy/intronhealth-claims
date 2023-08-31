@@ -8,7 +8,7 @@ from app.models import User
 
 class AddUser(FlaskForm):
     name = StringField('name', validators=[validators.length(min=3, max=100), validators.DataRequired()])
-    gender = RadioField('gender', choices = ['male', 'female'])
+    gender = RadioField('gender', choices = ['Male', 'Female'])
     salary = IntegerField(validators=[validators.NumberRange(min=0), validators.DataRequired()])
     date_of_birth = DateField(format='%Y-%m-%d', validators=[validators.DataRequired()])
 

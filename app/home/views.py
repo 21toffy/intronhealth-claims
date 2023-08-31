@@ -12,7 +12,8 @@ import datetime as dt
 
 @home_blueprint.route('/', methods=['GET'])
 def home():
-    return "Hello, World!"
+
+    return render_template('home/index.html')
 
 @home_blueprint.route('/all/users', methods=['GET'])
 def all_users():
@@ -155,7 +156,6 @@ def create_claim():
         service_date = []
         for d in dates:
             service_date.append(datetime.strptime(d, '%Y-%m-%d'))
-        print("Anthony", service_date)
 
         # Get the above claim as foreign key for services
         claim = Claim.query.order_by(Claim.id.desc()).first()
@@ -166,7 +166,7 @@ def create_claim():
             new_service = Service(claim_id=claim.id,
                                   service_date=service_date[i],
                                   service_name=service_name[i],
-                                  service_type=service_type[i],
+                                  service_type=service_type[0],
                                   provider_name=provider_name[i],
                                   source_hospital=source[i],
                                   cost_of_service=cost_of_service[i])
