@@ -14,7 +14,6 @@ import datetime as dt
 def home():
     return "Hello, World!"
 
-
 @home_blueprint.route('/all/users', methods=['GET'])
 def all_users():
     """
