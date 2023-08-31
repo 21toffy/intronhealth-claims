@@ -6,13 +6,13 @@ The url of the API is http://16.171.5.210/home (please note that this is a HTTP 
 
 The API was deployed on AWS using Docker and Docker Hub
 
-Here are some sample URLS to interact with the Application
-
 ## DataBase Schema
 
 ![Screenshot](screenshots/db_schema.jpeg)
 
 ##### Database Diagram showing the relationships between Tables in the application
+
+Here are some sample URLS to interact with the Application
 
 ## The Landing Page
 
@@ -23,14 +23,6 @@ http://16.171.5.210/home
 ## List of All Claims
 
 http://16.171.5.210/home/all/claims
-
-##Actions
-
-#### Create Claim
-
-#### Edit Claim
-
-#### Delete Claim
 
 ## CiCd - Continuous integration and deployment
 
