@@ -1,0 +1,101 @@
+{% extends "home/base.html" %} {% block title %} Claim Details {% endblock %} {%
+block styles %}
+<style></style>
+{% endblock %} {% block body %}
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ url_for('home.claim') }}">All Claims</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Claim Details
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="claim-details">
+        <h2 class="claim-header">
+          Claim Details for {{ claim_data.user.name }}
+        </h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <label>User:</label>
+          </div>
+          <div class="col-sm-8">
+            <p>{{ claim_data.user.name }}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <label>Diagnosis:</label>
+          </div>
+          <div class="col-sm-4">
+            <p>{{ claim_data.diagnosis }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <label>HMO:</label>
+          </div>
+          <div class="col-sm-4">
+            <p>{{ claim_data.hmo }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <label>Service Charge:</label>
+          </div>
+          <div class="col-sm-4">
+            <p>₦ {{ claim_data.service_charge }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <label>Final Cost:</label>
+          </div>
+          <div class="col-sm-4">
+            <p>₦ {{ claim_data.final_cost }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center">
+        <a
+          href="{{ url_for('home.edit_claim', id=claim_data.id) }}"
+          class="btn btn-success btn-lg"
+          >Edit Claim</a
+        >
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="claim-services">
+        <h3 class="claim-details">Claim Services</h3>
+        {% if claim_data.services %} {% for service in claim_data.services %}
+        <div class="service-item">
+          <p><strong>Service Name:</strong> {{ service.service_name }}</p>
+          <p><strong>Service Type:</strong> {{ service.service_type }}</p>
+          <p><strong>Provider Name:</strong> {{ service.provider_name }}</p>
+          <p><strong>Source Hospital:</strong> {{ service.source_hospital }}</p>
+          <p>
+            <strong>Cost of Service:</strong> ₦ {{ service.cost_of_service }}
+          </p>
+          <p>
+            <strong>Service Date:</strong> {{
+            service.service_date.strftime('%Y-%m-%d') }}
+          </p>
+        </div>
+        {% endfor %} {% else %}
+        <p>No services found for this claim.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
